@@ -1,6 +1,6 @@
 const contacts = require("./contacts");
 
-// const argv = require("yargs").argv;
+const { program } = require("commander");
 
 async function invokeAction({ action, id, name, email, phone }) {
   switch (action) {
@@ -25,6 +25,18 @@ async function invokeAction({ action, id, name, email, phone }) {
   }
 }
 
+program
+  .option("-a, --action <type>", "choose action")
+  .option("-i, --id <type>", "user id")
+  .option("-n, --name <type>", "user name")
+  .option("-e, --email <type>", "user email")
+  .option("-p, --phone <type>", "user phone");
+
+program.parse();
+
+const options = program.opts();
+invokeAction(options);
+
 // invokeAction({ action: "list" });
 // invokeAction({ action: "get", id: "e6ywwRe4jcqxXfCZOj_1e" });
 // invokeAction({
@@ -34,4 +46,10 @@ async function invokeAction({ action, id, name, email, phone }) {
 //   phone: "380505055555",
 // });
 
-invokeAction({ action: "remove", id: "rsKkOQUi80UsgVPCcLZZW" });
+// invokeAction({ action: "remove", id: "rsKkOQUi80UsgVPCcLZZW" });
+
+const actionIndex = process.argv.indexOf("--action");
+if (actionIndex !== -1) {
+  const action = process.argv[actionIndex + 1];
+  invokeAction({ action });
+}
