@@ -1,6 +1,6 @@
 ## Creating CLI(Command line interface) with Node.js
 
-# Result of actions in CLI:
+### The result of actions in CLI on the link:
 
 - [Action "List"](https://monosnap.com/file/XC1nw6cvxUoDFpIgY9Pj7J8mUm8IPP) - to get all contacts from db.json;
 - [Action "Get"](https://monosnap.com/file/Ufov5CAI3CePoU1IeegOaJVWFfP6lE) - to get one contact by id from db.json;
